@@ -33,6 +33,7 @@
             this.columns_nud = new System.Windows.Forms.NumericUpDown();
             this.rows_nud = new System.Windows.Forms.NumericUpDown();
             this.select_b = new System.Windows.Forms.Button();
+            this.random_fill_cb = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.columns_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rows_nud)).BeginInit();
             this.SuspendLayout();
@@ -58,36 +59,71 @@
             // columns_nud
             // 
             this.columns_nud.Location = new System.Drawing.Point(90, 110);
+            this.columns_nud.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.columns_nud.Name = "columns_nud";
             this.columns_nud.Size = new System.Drawing.Size(100, 23);
             this.columns_nud.TabIndex = 7;
+            this.columns_nud.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // rows_nud
             // 
             this.rows_nud.Location = new System.Drawing.Point(90, 47);
+            this.rows_nud.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.rows_nud.Name = "rows_nud";
             this.rows_nud.Size = new System.Drawing.Size(100, 23);
             this.rows_nud.TabIndex = 6;
+            this.rows_nud.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // select_b
             // 
-            this.select_b.Location = new System.Drawing.Point(100, 182);
+            this.select_b.Location = new System.Drawing.Point(100, 200);
             this.select_b.Name = "select_b";
             this.select_b.Size = new System.Drawing.Size(80, 40);
             this.select_b.TabIndex = 5;
             this.select_b.Text = "Select";
             this.select_b.UseVisualStyleBackColor = true;
+            this.select_b.Click += new System.EventHandler(this.create_table);
+            // 
+            // random_fill_cb
+            // 
+            this.random_fill_cb.AutoSize = true;
+            this.random_fill_cb.Location = new System.Drawing.Point(97, 158);
+            this.random_fill_cb.Name = "random_fill_cb";
+            this.random_fill_cb.Size = new System.Drawing.Size(89, 19);
+            this.random_fill_cb.TabIndex = 11;
+            this.random_fill_cb.Text = "Random FIll";
+            this.random_fill_cb.UseVisualStyleBackColor = true;
             // 
             // Informations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.random_fill_cb);
             this.Controls.Add(this.columns_l);
             this.Controls.Add(this.rows_l);
             this.Controls.Add(this.columns_nud);
             this.Controls.Add(this.rows_nud);
             this.Controls.Add(this.select_b);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Informations";
             this.Text = "Informations";
             ((System.ComponentModel.ISupportInitialize)(this.columns_nud)).EndInit();
@@ -104,5 +140,6 @@
         private NumericUpDown columns_nud;
         private NumericUpDown rows_nud;
         private Button select_b;
+        private CheckBox random_fill_cb;
     }
 }

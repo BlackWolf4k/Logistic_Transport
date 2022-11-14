@@ -31,14 +31,14 @@
             this.columns_l = new System.Windows.Forms.Label();
             this.new_table_l = new System.Windows.Forms.Label();
             this.rows_l = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.columns_tb = new System.Windows.Forms.TextBox();
+            this.rows_tb = new System.Windows.Forms.TextBox();
             this.run_b = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.make_new_table_b = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.data_table_dgv = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.data_table_dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // columns_l
@@ -53,7 +53,7 @@
             // new_table_l
             // 
             this.new_table_l.AutoSize = true;
-            this.new_table_l.Location = new System.Drawing.Point(362, 20);
+            this.new_table_l.Location = new System.Drawing.Point(351, 20);
             this.new_table_l.Name = "new_table_l";
             this.new_table_l.Size = new System.Drawing.Size(94, 15);
             this.new_table_l.TabIndex = 3;
@@ -68,21 +68,21 @@
             this.rows_l.TabIndex = 1;
             this.rows_l.Text = "Rows:";
             // 
-            // textBox2
+            // columns_tb
             // 
-            this.textBox2.Location = new System.Drawing.Point(243, 17);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(68, 23);
-            this.textBox2.TabIndex = 6;
+            this.columns_tb.Location = new System.Drawing.Point(243, 17);
+            this.columns_tb.Name = "columns_tb";
+            this.columns_tb.ReadOnly = true;
+            this.columns_tb.Size = new System.Drawing.Size(68, 23);
+            this.columns_tb.TabIndex = 6;
             // 
-            // textBox1
+            // rows_tb
             // 
-            this.textBox1.Location = new System.Drawing.Point(56, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(68, 23);
-            this.textBox1.TabIndex = 5;
+            this.rows_tb.Location = new System.Drawing.Point(56, 17);
+            this.rows_tb.Name = "rows_tb";
+            this.rows_tb.ReadOnly = true;
+            this.rows_tb.Size = new System.Drawing.Size(68, 23);
+            this.rows_tb.TabIndex = 5;
             // 
             // run_b
             // 
@@ -97,8 +97,8 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.run_b);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.rows_tb);
+            this.panel1.Controls.Add(this.columns_tb);
             this.panel1.Controls.Add(this.make_new_table_b);
             this.panel1.Controls.Add(this.rows_l);
             this.panel1.Controls.Add(this.new_table_l);
@@ -111,35 +111,36 @@
             // 
             // make_new_table_b
             // 
-            this.make_new_table_b.Location = new System.Drawing.Point(462, 12);
+            this.make_new_table_b.Location = new System.Drawing.Point(451, 12);
             this.make_new_table_b.Name = "make_new_table_b";
             this.make_new_table_b.Size = new System.Drawing.Size(120, 30);
             this.make_new_table_b.TabIndex = 4;
             this.make_new_table_b.Text = "New";
             this.make_new_table_b.UseVisualStyleBackColor = true;
+            this.make_new_table_b.Click += new System.EventHandler(this.new_table);
             // 
-            // dataGridView1
+            // data_table_dgv
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 58);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(784, 353);
-            this.dataGridView1.TabIndex = 10;
+            this.data_table_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.data_table_dgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.data_table_dgv.Location = new System.Drawing.Point(0, 58);
+            this.data_table_dgv.Name = "data_table_dgv";
+            this.data_table_dgv.RowTemplate.Height = 25;
+            this.data_table_dgv.Size = new System.Drawing.Size(784, 353);
+            this.data_table_dgv.TabIndex = 10;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 411);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.data_table_dgv);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.data_table_dgv)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -149,11 +150,11 @@
         private Label columns_l;
         private Label new_table_l;
         private Label rows_l;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox columns_tb;
+        private TextBox rows_tb;
         private Button run_b;
         private Panel panel1;
         private Button make_new_table_b;
-        private DataGridView dataGridView1;
+        private DataGridView data_table_dgv;
     }
 }
