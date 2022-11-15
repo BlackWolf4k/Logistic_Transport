@@ -32,14 +32,16 @@ namespace Logistic_Transport
             // Make the headers of the table
             // Set the names of the rows
             data_table_dgv.RowHeadersWidth = 100;
-            for ( int i = 0; i < Informations.table_informations.rows; i++ )
+            for ( Int32 i = 0; i < Informations.table_informations.rows; i++ )
                 data_table_dgv.Rows[i].HeaderCell.Value = "UP" + i.ToString();
-            data_table_dgv.Rows[Informations.table_informations.rows].HeaderCell.Value = "Total";
+            data_table_dgv.Rows[ Informations.table_informations.rows ].HeaderCell.Value = "Total";
+            data_table_dgv.Rows[ Informations.table_informations.rows ].ReadOnly = true;
 
             // Set the names of the columns
-            for ( int i = 0; i < Informations.table_informations.columns; i++ )
+            for ( Int32 i = 0; i < Informations.table_informations.columns; i++ )
                 data_table_dgv.Columns[i].Name = "D" + i.ToString();
             data_table_dgv.Columns[ Informations.table_informations.columns ].Name = "Total";
+            data_table_dgv.Columns[ Informations.table_informations.columns ].ReadOnly = true;
 
         }
 
@@ -65,6 +67,7 @@ namespace Logistic_Transport
                 cell.KeyPress += new KeyPressEventHandler( key_pressed );
 
             check_sum();
+            e.Control.
         }
 
         private void key_pressed( object sender, KeyPressEventArgs e )
@@ -75,7 +78,13 @@ namespace Logistic_Transport
         }
 
         // Check that the rows and columns totals are correct
-        private void check_sum()
-        {}
+        private void check_sum( Int32 row, Int32 column )
+        {
+            Int32 total = 0;
+            for ( Int32 i = 0; i < Informations.table_informations.rows; i++ )
+            {
+                // total += Int32.Parse( data_table_dgv.Rows[i].Cells[column].Value );
+            }
+        }
     }
 }
