@@ -128,6 +128,7 @@
             this.data_table_dgv.RowTemplate.Height = 25;
             this.data_table_dgv.Size = new System.Drawing.Size(784, 353);
             this.data_table_dgv.TabIndex = 10;
+            this.data_table_dgv.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.input_check);
             // 
             // Form1
             // 

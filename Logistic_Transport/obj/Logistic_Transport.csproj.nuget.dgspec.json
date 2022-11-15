@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Fin\\Logistic_Transport\\Logistic_Transport\\Logistic_Transport.csproj": {}
+    "C:\\Users\\riva.18361\\source\\repos\\Logistic_Transport\\Logistic_Transport\\Logistic_Transport.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Fin\\Logistic_Transport\\Logistic_Transport\\Logistic_Transport.csproj": {
+    "C:\\Users\\riva.18361\\source\\repos\\Logistic_Transport\\Logistic_Transport\\Logistic_Transport.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Fin\\Logistic_Transport\\Logistic_Transport\\Logistic_Transport.csproj",
+        "projectUniqueName": "C:\\Users\\riva.18361\\source\\repos\\Logistic_Transport\\Logistic_Transport\\Logistic_Transport.csproj",
         "projectName": "Logistic_Transport",
-        "projectPath": "C:\\Users\\Fin\\Logistic_Transport\\Logistic_Transport\\Logistic_Transport.csproj",
-        "packagesPath": "C:\\Users\\Fin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Fin\\Logistic_Transport\\Logistic_Transport\\obj\\",
+        "projectPath": "C:\\Users\\riva.18361\\source\\repos\\Logistic_Transport\\Logistic_Transport\\Logistic_Transport.csproj",
+        "packagesPath": "C:\\Users\\riva.18361\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\riva.18361\\source\\repos\\Logistic_Transport\\Logistic_Transport\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Fin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\riva.18361\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,7 +57,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
