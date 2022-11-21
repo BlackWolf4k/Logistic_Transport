@@ -49,7 +49,47 @@ namespace Logistic_Transport
         // Requires no argument
         // returns nothing
         private void random_fill_data_table()
-        {}
+        {
+            Random random = new Random();
+
+            Int32 production_total = 0;
+
+            // Generate the random numbers
+            // Calculate the production total
+            for ( Int32 i = 0; i < Informations.table_informations.rows; i++ )
+            {
+                Int32 sub_total = 0;
+                for ( Int32 j = 0; j < Informations.table_informations.columns; j++ )
+                {
+                    Int32 random_value = random.Next( 1, 101 );
+                    sub_total += random_value;
+                    data_table_dgv[ j, i ].Value = random_value;
+                }
+                data_table_dgv[ Informations.table_informations.columns, i ].Value = sub_total;
+
+                // Calculate the production final total
+                production_total += sub_total;
+            }
+
+            Int32 requests_total = 0;
+
+            // Calculate the requests total
+            for ( Int32 i = 0; i < Informations.table_informations.columns; i++ )
+            {
+                Int32 sub_total = 0;
+                for ( Int32 j = 0; j < Informations.table_informations.rows; j++ )
+                {
+                    sub_total += Int32.Parse( data_table_dgv[i, j].Value.ToString() );
+                }
+                data_table_dgv[ i, Informations.table_informations.rows ].Value = sub_total;
+
+                requests_total += sub_total;
+            }
+            data_table_dgv[ Informations.table_informations.rows, Informations.table_informations.columns ].Value = requests_total;
+
+            if ( production_total !=  requests_total )
+                MessageBox.Show( "Error" );
+        }
 
         // Check that the data inserted in the table are correct
         // Requires no argument
@@ -65,9 +105,7 @@ namespace Logistic_Transport
 
             if ( cell != null )
                 cell.KeyPress += new KeyPressEventHandler( key_pressed );
-
-            check_sum();
-            e.Control.
+            check_sum(data_table_dgv.CurrentCell.RowIndex, data_table_dgv.CurrentCell.ColumnIndex);
         }
 
         private void key_pressed( object sender, KeyPressEventArgs e )
@@ -81,10 +119,20 @@ namespace Logistic_Transport
         private void check_sum( Int32 row, Int32 column )
         {
             Int32 total = 0;
+
+            // Change the requests total
             for ( Int32 i = 0; i < Informations.table_informations.rows; i++ )
-            {
-                // total += Int32.Parse( data_table_dgv.Rows[i].Cells[column].Value );
-            }
+                total += Int32.Parse( data_table_dgv[ column, i ].Value.ToString() );
+            
+            data_table_dgv[ column, Informations.table_informations.rows ].Value = total;
+
+            total = 0;
+
+            // Change the production total
+            for (Int32 i = 0; i < Informations.table_informations.columns; i++)
+                total += Int32.Parse(data_table_dgv[i, row].Value.ToString());
+
+            data_table_dgv[Informations.table_informations.columns, row].Value = total;
         }
     }
 }
