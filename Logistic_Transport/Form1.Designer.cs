@@ -1,6 +1,6 @@
 ﻿namespace Logistic_Transport
 {
-    partial class Form1
+    partial class Logistic_Transport
     {
         /// <summary>
         ///  Required designer variable.
@@ -75,6 +75,7 @@
             this.columns_tb.ReadOnly = true;
             this.columns_tb.Size = new System.Drawing.Size(68, 23);
             this.columns_tb.TabIndex = 6;
+            this.columns_tb.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // rows_tb
             // 
@@ -83,6 +84,7 @@
             this.rows_tb.ReadOnly = true;
             this.rows_tb.Size = new System.Drawing.Size(68, 23);
             this.rows_tb.TabIndex = 5;
+            this.rows_tb.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // run_b
             // 
@@ -93,6 +95,7 @@
             this.run_b.TabIndex = 7;
             this.run_b.Text = "Run";
             this.run_b.UseVisualStyleBackColor = true;
+            this.run_b.Click += new System.EventHandler(this.run);
             // 
             // panel1
             // 
@@ -130,15 +133,16 @@
             this.data_table_dgv.TabIndex = 10;
             this.data_table_dgv.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.input_check);
             // 
-            // Form1
+            // Logistic_Transport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 411);
             this.Controls.Add(this.data_table_dgv);
             this.Controls.Add(this.panel1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.MinimumSize = new System.Drawing.Size(800, 450);
+            this.Name = "Logistic_Transport";
+            this.Text = "Logistic Transport";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data_table_dgv)).EndInit();

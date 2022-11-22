@@ -67,6 +67,7 @@
             this.columns_nud.Name = "columns_nud";
             this.columns_nud.Size = new System.Drawing.Size(100, 23);
             this.columns_nud.TabIndex = 7;
+            this.columns_nud.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columns_nud.Value = new decimal(new int[] {
             2,
             0,
@@ -84,6 +85,7 @@
             this.rows_nud.Name = "rows_nud";
             this.rows_nud.Size = new System.Drawing.Size(100, 23);
             this.rows_nud.TabIndex = 6;
+            this.rows_nud.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.rows_nud.Value = new decimal(new int[] {
             2,
             0,
