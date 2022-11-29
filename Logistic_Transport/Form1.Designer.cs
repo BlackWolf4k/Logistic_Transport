@@ -124,6 +124,8 @@
             // 
             // data_table_dgv
             // 
+            this.data_table_dgv.AllowUserToAddRows = false;
+            this.data_table_dgv.AllowUserToDeleteRows = false;
             this.data_table_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_table_dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.data_table_dgv.Location = new System.Drawing.Point(0, 58);

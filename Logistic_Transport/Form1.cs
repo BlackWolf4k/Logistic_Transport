@@ -67,29 +67,48 @@ namespace Logistic_Transport
             Int32 production_total = 0;
             Int32 requests_total = 0;
 
+            // Generat ethe request total
             for ( Int32 i = 0; i < Informations.table_informations.columns; i++ )
             {
+                Int32 random_value = random.Next( 1, 101 );
+                requests_total += random_value;
+                data_table_dgv[ i, Informations.table_informations.rows ].Value = random_value;
             }
 
-            for ( Int32 j = 0; j < Informations.table_informations.rows; j++ )
-            {}
-
-            /*// Calculate the requests total
-            for ( Int32 i = 0; i < Informations.table_informations.columns; i++ )
+            // Generate the production total
+            for ( Int32 i = 0; i < Informations.table_informations.rows; i++ )
             {
-                Int32 sub_total = 0;
-                for ( Int32 j = 0; j < Informations.table_informations.rows; j++ )
+                if ( i == Informations.table_informations.rows - 1 )
                 {
-                    sub_total += Int32.Parse( data_table_dgv[i, j].Value.ToString() );
+                    if ( requests_total < production_total )
+                    {
+                        Int32 random_value = random.Next( 1, 101 );
+                        data_table_dgv[ Informations.table_informations.columns - 1, Informations.table_informations.rows ].Value = ( requests_total - random_value ) + random_value;
+                        data_table_dgv[ Informations.table_informations.columns, Informations.table_informations.rows - 1 ].Value = random_value;
+                        production_total += random_value;
+                    }
+                    else if ( requests_total == production_total )
+                    {
+                        Int32 random_value = random.Next( 1, 101 );
+                        data_table_dgv[ Informations.table_informations.columns - 1, Informations.table_informations.rows ].Value = random_value;
+                        data_table_dgv[ Informations.table_informations.columns, Informations.table_informations.rows - 1 ].Value = random_value;
+                        production_total += random_value;
+                    }
+                    else
+                    {
+                        data_table_dgv[ Informations.table_informations.columns, Informations.table_informations.rows - 1 ].Value = requests_total - production_total;
+                        production_total += requests_total - production_total;
+                    }
                 }
-                data_table_dgv[ i, Informations.table_informations.rows ].Value = sub_total;
-
-                requests_total += sub_total;
+                else
+                {
+                    Int32 random_value = random.Next( 1, 101 );
+                    production_total += random_value;
+                    data_table_dgv[ Informations.table_informations.columns, i ].Value = random_value;
+                }
             }
-            data_table_dgv[ Informations.table_informations.columns, Informations.table_informations.rows ].Value = requests_total;
 
-            if ( production_total !=  requests_total )
-                MessageBox.Show( "Error" );*/
+            data_table_dgv[ Informations.table_informations.columns, Informations.table_informations.rows ].Value = production_total;
         }
 
         private void input_check( object sender, DataGridViewEditingControlShowingEventArgs e )
@@ -111,14 +130,29 @@ namespace Logistic_Transport
                 e.Handled = true;
         }
 
-        void check_table()
-        {}
+        bool check_table()
+        {
+            Int32 total = 0;
+            for ( Int32 i = 0; i < Informations.table_informations.rows; i++ )
+            {
+                total += Int32.Parse( data_table_dgv[ Informations.table_informations.columns, i ].Value.ToString() );
+            }
+
+            for ( Int32 i = 0; i < Informations.table_informations.columns; i++ )
+            {
+                total -= Int32.Parse( data_table_dgv[ i, Informations.table_informations.rows ].Value.ToString() );
+            }
+
+            if ( total == 0 )
+                return true;
+            return false;
+        }
 
         // Check that the rows and columns totals are correct
         private void check_sum( Int32 row, Int32 column )
         {
-            MessageBox.Show("aaa");
-            /*Int32 total = 0;
+            // MessageBox.Show("aaa");
+            Int32 total = 0;
 
             // Change the requests total
             for ( Int32 i = 0; i < Informations.table_informations.rows; i++ )
@@ -132,7 +166,7 @@ namespace Logistic_Transport
             for ( Int32 i = 0; i < Informations.table_informations.columns; i++ )
                 total += Int32.Parse( data_table_dgv[i, row].Value.ToString() );
 
-            data_table_dgv[Informations.table_informations.columns, row].Value = total;*/
+            data_table_dgv[Informations.table_informations.columns, row].Value = total;
         }
 
         private void run( object sender, EventArgs e )
