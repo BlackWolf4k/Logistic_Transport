@@ -22,7 +22,6 @@ C:\Users\Fin\Logistic_Transport\Logistic_Transport\bin\Debug\net6.0-windows\Logi
 C:\Users\Fin\Logistic_Transport\Logistic_Transport\bin\Debug\net6.0-windows\Logistic_Transport.dll
 C:\Users\Fin\Logistic_Transport\Logistic_Transport\bin\Debug\net6.0-windows\Logistic_Transport.pdb
 C:\Users\Fin\Logistic_Transport\Logistic_Transport\obj\Debug\net6.0-windows\Logistic_Transport.csproj.AssemblyReference.cache
-C:\Users\Fin\Logistic_Transport\Logistic_Transport\obj\Debug\net6.0-windows\Logistic_Transport.Form1.resources
 C:\Users\Fin\Logistic_Transport\Logistic_Transport\obj\Debug\net6.0-windows\Logistic_Transport.Informations.resources
 C:\Users\Fin\Logistic_Transport\Logistic_Transport\obj\Debug\net6.0-windows\Logistic_Transport.Output.resources
 C:\Users\Fin\Logistic_Transport\Logistic_Transport\obj\Debug\net6.0-windows\Logistic_Transport.csproj.GenerateResource.cache
@@ -36,3 +35,4 @@ C:\Users\Fin\Logistic_Transport\Logistic_Transport\obj\Debug\net6.0-windows\Logi
 C:\Users\Fin\Logistic_Transport\Logistic_Transport\obj\Debug\net6.0-windows\Logistic_Transport.genruntimeconfig.cache
 C:\Users\Fin\Logistic_Transport\Logistic_Transport\obj\Debug\net6.0-windows\ref\Logistic_Transport.dll
 C:\Users\riva.18361\source\repos\Logistic_Transport\Logistic_Transport\obj\Debug\net6.0-windows\Logistic_Transport.Logistic_Transport.resources
+C:\Users\Fin\Logistic_Transport\Logistic_Transport\obj\Debug\net6.0-windows\Logistic_Transport.Logistic_Transport.resources

@@ -14,6 +14,11 @@ namespace Logistic_Transport
             Informations informations = new Informations();
             informations.ShowDialog();
 
+            // Clear the old table
+            data_table_dgv.Rows.Clear();
+            data_table_dgv.Columns.Clear();
+            data_table_dgv.Refresh();
+
             // Set the informations
             data_table_dgv.RowCount = Informations.table_informations.rows + 1;
             data_table_dgv.ColumnCount = Informations.table_informations.columns + 1;
@@ -44,6 +49,8 @@ namespace Logistic_Transport
             // Make the total readonly
             data_table_dgv[ Informations.table_informations.columns, Informations.table_informations.rows ].ReadOnly = true;
 
+            // Enable the run button
+            run_b.Enabled = true;
         }
 
         // Fill the data table with random data
@@ -111,6 +118,7 @@ namespace Logistic_Transport
             data_table_dgv[ Informations.table_informations.columns, Informations.table_informations.rows ].Value = production_total;
         }
 
+        // Ckec that only numbers are beeing inserted
         private void input_check( object sender, DataGridViewEditingControlShowingEventArgs e )
         {
             e.Control.KeyPress -= new KeyPressEventHandler( key_pressed );
@@ -120,7 +128,7 @@ namespace Logistic_Transport
             if ( cell != null )
                 cell.KeyPress += new KeyPressEventHandler( key_pressed );
 
-            check_sum( data_table_dgv.CurrentCell.RowIndex, data_table_dgv.CurrentCell.ColumnIndex );
+            // check_sum( data_table_dgv.CurrentCell.RowIndex, data_table_dgv.CurrentCell.ColumnIndex );
         }
 
         private void key_pressed( object sender, KeyPressEventArgs e )
@@ -130,28 +138,44 @@ namespace Logistic_Transport
                 e.Handled = true;
         }
 
+        // Chck that the value inside the table are ok
         bool check_table()
         {
             Int32 total = 0;
+            Int32 total_b = 0;
             for ( Int32 i = 0; i < Informations.table_informations.rows; i++ )
             {
                 total += Int32.Parse( data_table_dgv[ Informations.table_informations.columns, i ].Value.ToString() );
             }
+
+            total_b = total;
 
             for ( Int32 i = 0; i < Informations.table_informations.columns; i++ )
             {
                 total -= Int32.Parse( data_table_dgv[ i, Informations.table_informations.rows ].Value.ToString() );
             }
 
-            if ( total == 0 )
+            bool content = true;
+
+            if ( Informations.table_informations.rows < 2 || Informations.table_informations.columns < 2 )
+                content = false;
+
+            for ( Int32 i = 0; i < Informations.table_informations.rows; i++ )
+                for ( Int32 j = 0; j < Informations.table_informations.columns; j++ )
+                    if ( data_table_dgv[ j, i ].Value == "" || data_table_dgv[ j, i ].Value.ToString() == "0" )
+                        content = false;
+
+            if ( total == 0 && content )
+            {
+                data_table_dgv[ Informations.table_informations.columns, Informations.table_informations.rows ].Value = total_b;
                 return true;
+            }
             return false;
         }
 
         // Check that the rows and columns totals are correct
         private void check_sum( Int32 row, Int32 column )
         {
-            // MessageBox.Show("aaa");
             Int32 total = 0;
 
             // Change the requests total
@@ -173,11 +197,11 @@ namespace Logistic_Transport
         {
             if ( !check_table() )
             {
-                MessageBox.Show( "" );
+                MessageBox.Show( "Check the table and try again" );
             }
             else
             {
-                Output output = new Output();
+                Output output = new Output( ref data_table_dgv );
                 output.ShowDialog();
             }
         }

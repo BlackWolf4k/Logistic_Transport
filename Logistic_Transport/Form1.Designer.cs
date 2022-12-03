@@ -89,6 +89,7 @@
             // run_b
             // 
             this.run_b.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.run_b.Enabled = false;
             this.run_b.Location = new System.Drawing.Point(672, 12);
             this.run_b.Name = "run_b";
             this.run_b.Size = new System.Drawing.Size(100, 30);
@@ -162,6 +163,6 @@
         private Button run_b;
         private Panel panel1;
         private Button make_new_table_b;
-        private DataGridView data_table_dgv;
+        public DataGridView data_table_dgv;
     }
 }

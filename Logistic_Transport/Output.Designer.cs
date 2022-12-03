@@ -30,13 +30,14 @@
         {
             this.output_lv = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.run_nord_ovest_b = new System.Windows.Forms.Button();
             this.run_minimum_prices_b = new System.Windows.Forms.Button();
+            this.run_nord_west_b = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // output_lv
             // 
+            this.output_lv.FullRowSelect = true;
             this.output_lv.Location = new System.Drawing.Point(12, 58);
             this.output_lv.Name = "output_lv";
             this.output_lv.Size = new System.Drawing.Size(360, 391);
@@ -46,20 +47,11 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.run_minimum_prices_b);
-            this.panel1.Controls.Add(this.run_nord_ovest_b);
+            this.panel1.Controls.Add(this.run_nord_west_b);
             this.panel1.Location = new System.Drawing.Point(1, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(381, 50);
             this.panel1.TabIndex = 1;
-            // 
-            // run_nord_ovest_b
-            // 
-            this.run_nord_ovest_b.Location = new System.Drawing.Point(11, 3);
-            this.run_nord_ovest_b.Name = "run_nord_ovest_b";
-            this.run_nord_ovest_b.Size = new System.Drawing.Size(86, 40);
-            this.run_nord_ovest_b.TabIndex = 0;
-            this.run_nord_ovest_b.Text = "Nord-West";
-            this.run_nord_ovest_b.UseVisualStyleBackColor = true;
             // 
             // run_minimum_prices_b
             // 
@@ -69,6 +61,17 @@
             this.run_minimum_prices_b.TabIndex = 1;
             this.run_minimum_prices_b.Text = "Minimum Prices";
             this.run_minimum_prices_b.UseVisualStyleBackColor = true;
+            this.run_minimum_prices_b.Click += new System.EventHandler(this.run_minimum_prices);
+            // 
+            // run_nord_west_b
+            // 
+            this.run_nord_west_b.Location = new System.Drawing.Point(11, 3);
+            this.run_nord_west_b.Name = "run_nord_west_b";
+            this.run_nord_west_b.Size = new System.Drawing.Size(86, 40);
+            this.run_nord_west_b.TabIndex = 0;
+            this.run_nord_west_b.Text = "Nord-West";
+            this.run_nord_west_b.UseVisualStyleBackColor = true;
+            this.run_nord_west_b.Click += new System.EventHandler(this.run_nord_west);
             // 
             // Output
             // 
@@ -90,6 +93,6 @@
         private ListView output_lv;
         private Panel panel1;
         private Button run_minimum_prices_b;
-        private Button run_nord_ovest_b;
+        private Button run_nord_west_b;
     }
 }
