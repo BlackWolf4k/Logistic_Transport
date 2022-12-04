@@ -141,6 +141,19 @@ namespace Logistic_Transport
         // Chck that the value inside the table are ok
         bool check_table()
         {
+            bool content = true;
+
+            if ( Informations.table_informations.rows < 2 || Informations.table_informations.columns < 2 )
+                content = false;
+
+            for ( Int32 i = 0; i < Informations.table_informations.rows; i++ )
+                for ( Int32 j = 0; j < Informations.table_informations.columns; j++ )
+                    if ( data_table_dgv[ j, i ].Value == "" || data_table_dgv[ j, i ].Value.ToString() == "0" )
+                        content = false;
+
+            if ( content == false )
+                return false;
+
             Int32 total = 0;
             Int32 total_b = 0;
             for ( Int32 i = 0; i < Informations.table_informations.rows; i++ )
@@ -154,16 +167,6 @@ namespace Logistic_Transport
             {
                 total -= Int32.Parse( data_table_dgv[ i, Informations.table_informations.rows ].Value.ToString() );
             }
-
-            bool content = true;
-
-            if ( Informations.table_informations.rows < 2 || Informations.table_informations.columns < 2 )
-                content = false;
-
-            for ( Int32 i = 0; i < Informations.table_informations.rows; i++ )
-                for ( Int32 j = 0; j < Informations.table_informations.columns; j++ )
-                    if ( data_table_dgv[ j, i ].Value == "" || data_table_dgv[ j, i ].Value.ToString() == "0" )
-                        content = false;
 
             if ( total == 0 && content )
             {

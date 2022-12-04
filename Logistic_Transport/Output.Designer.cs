@@ -32,6 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.run_minimum_prices_b = new System.Windows.Forms.Button();
             this.run_nord_west_b = new System.Windows.Forms.Button();
+            this.step_by_step_cb = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,6 +47,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.step_by_step_cb);
             this.panel1.Controls.Add(this.run_minimum_prices_b);
             this.panel1.Controls.Add(this.run_nord_west_b);
             this.panel1.Location = new System.Drawing.Point(1, 2);
@@ -73,6 +75,16 @@
             this.run_nord_west_b.UseVisualStyleBackColor = true;
             this.run_nord_west_b.Click += new System.EventHandler(this.run_nord_west);
             // 
+            // step_by_step_cb
+            // 
+            this.step_by_step_cb.AutoSize = true;
+            this.step_by_step_cb.Location = new System.Drawing.Point(280, 15);
+            this.step_by_step_cb.Name = "step_by_step_cb";
+            this.step_by_step_cb.Size = new System.Drawing.Size(91, 19);
+            this.step_by_step_cb.TabIndex = 2;
+            this.step_by_step_cb.Text = "Step By Step";
+            this.step_by_step_cb.UseVisualStyleBackColor = true;
+            // 
             // Output
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -80,10 +92,14 @@
             this.ClientSize = new System.Drawing.Size(384, 461);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.output_lv);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(400, 500);
             this.Name = "Output";
             this.Text = "Output";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -94,5 +110,6 @@
         private Panel panel1;
         private Button run_minimum_prices_b;
         private Button run_nord_west_b;
+        private CheckBox step_by_step_cb;
     }
 }
