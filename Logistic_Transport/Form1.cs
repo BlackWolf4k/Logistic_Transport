@@ -90,15 +90,20 @@ namespace Logistic_Transport
                     if ( requests_total < production_total )
                     {
                         Int32 random_value = random.Next( 1, 101 );
-                        data_table_dgv[ Informations.table_informations.columns - 1, Informations.table_informations.rows ].Value = ( requests_total - random_value ) + random_value;
+                        
+                        // Last of production
                         data_table_dgv[ Informations.table_informations.columns, Informations.table_informations.rows - 1 ].Value = random_value;
                         production_total += random_value;
+
+                        data_table_dgv[ Informations.table_informations.columns - 1, Informations.table_informations.rows ].Value = production_total - requests_total;
                     }
                     else if ( requests_total == production_total )
                     {
                         Int32 random_value = random.Next( 1, 101 );
-                        data_table_dgv[ Informations.table_informations.columns - 1, Informations.table_informations.rows ].Value = random_value;
                         data_table_dgv[ Informations.table_informations.columns, Informations.table_informations.rows - 1 ].Value = random_value;
+
+                        data_table_dgv[ Informations.table_informations.columns - 1, Informations.table_informations.rows ].Value = requests_total + random_value;
+
                         production_total += random_value;
                     }
                     else

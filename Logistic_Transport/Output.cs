@@ -192,8 +192,6 @@ namespace Logistic_Transport
                     Informations.table_informations.rows -= 1;
                 }
 
-                MessageBox.Show("");
-
                 // Update the cost
                 cost += cell_cost * production;
             }
