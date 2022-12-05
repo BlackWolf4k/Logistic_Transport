@@ -59,6 +59,11 @@
             // columns_nud
             // 
             this.columns_nud.Location = new System.Drawing.Point(90, 110);
+            this.columns_nud.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.columns_nud.Minimum = new decimal(new int[] {
             2,
             0,
@@ -77,6 +82,11 @@
             // rows_nud
             // 
             this.rows_nud.Location = new System.Drawing.Point(90, 47);
+            this.rows_nud.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.rows_nud.Minimum = new decimal(new int[] {
             2,
             0,

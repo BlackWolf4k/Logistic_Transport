@@ -35,6 +35,7 @@
             this.rows_tb = new System.Windows.Forms.TextBox();
             this.run_b = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.last_table_b = new System.Windows.Forms.Button();
             this.make_new_table_b = new System.Windows.Forms.Button();
             this.data_table_dgv = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
@@ -100,6 +101,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.last_table_b);
             this.panel1.Controls.Add(this.run_b);
             this.panel1.Controls.Add(this.rows_tb);
             this.panel1.Controls.Add(this.columns_tb);
@@ -113,11 +115,22 @@
             this.panel1.Size = new System.Drawing.Size(784, 58);
             this.panel1.TabIndex = 9;
             // 
+            // last_table_b
+            // 
+            this.last_table_b.Enabled = false;
+            this.last_table_b.Location = new System.Drawing.Point(562, 12);
+            this.last_table_b.Name = "last_table_b";
+            this.last_table_b.Size = new System.Drawing.Size(78, 30);
+            this.last_table_b.TabIndex = 8;
+            this.last_table_b.Text = "Last";
+            this.last_table_b.UseVisualStyleBackColor = true;
+            this.last_table_b.Click += new System.EventHandler(this.reload_table);
+            // 
             // make_new_table_b
             // 
             this.make_new_table_b.Location = new System.Drawing.Point(451, 12);
             this.make_new_table_b.Name = "make_new_table_b";
-            this.make_new_table_b.Size = new System.Drawing.Size(120, 30);
+            this.make_new_table_b.Size = new System.Drawing.Size(78, 30);
             this.make_new_table_b.TabIndex = 4;
             this.make_new_table_b.Text = "New";
             this.make_new_table_b.UseVisualStyleBackColor = true;
@@ -164,5 +177,6 @@
         private Panel panel1;
         private Button make_new_table_b;
         public DataGridView data_table_dgv;
+        private Button last_table_b;
     }
 }

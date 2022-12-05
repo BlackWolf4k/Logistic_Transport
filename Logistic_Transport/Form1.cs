@@ -7,6 +7,9 @@ namespace Logistic_Transport
             InitializeComponent();
         }
 
+        Int32[] old_informations = new Int32[ 2 ];
+        private List<Int32> data = new List<Int32>();
+
         // Create a new table
         private void new_table( object sender, EventArgs e )
         {
@@ -14,6 +17,12 @@ namespace Logistic_Transport
             Informations informations = new Informations();
             informations.ShowDialog();
 
+            // Generate the table
+            make_new_table();
+        }
+
+        private void make_new_table()
+        {
             // Clear the old table
             data_table_dgv.Rows.Clear();
             data_table_dgv.Columns.Clear();
@@ -95,14 +104,14 @@ namespace Logistic_Transport
                         data_table_dgv[ Informations.table_informations.columns, Informations.table_informations.rows - 1 ].Value = random_value;
                         production_total += random_value;
 
-                        data_table_dgv[ Informations.table_informations.columns - 1, Informations.table_informations.rows ].Value = production_total - requests_total;
+                        data_table_dgv[ Informations.table_informations.columns - 1, Informations.table_informations.rows ].Value = Int32.Parse( data_table_dgv[ Informations.table_informations.columns - 1, Informations.table_informations.rows ].Value.ToString() ) + production_total - requests_total;
                     }
                     else if ( requests_total == production_total )
                     {
                         Int32 random_value = random.Next( 1, 101 );
                         data_table_dgv[ Informations.table_informations.columns, Informations.table_informations.rows - 1 ].Value = random_value;
 
-                        data_table_dgv[ Informations.table_informations.columns - 1, Informations.table_informations.rows ].Value = requests_total + random_value;
+                        data_table_dgv[ Informations.table_informations.columns - 1, Informations.table_informations.rows ].Value = Int32.Parse( data_table_dgv[ Informations.table_informations.columns - 1, Informations.table_informations.rows ].Value.ToString() ) + random_value;
 
                         production_total += random_value;
                     }
@@ -139,7 +148,7 @@ namespace Logistic_Transport
         private void key_pressed( object sender, KeyPressEventArgs e )
         {
             // !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            if ( !char.IsNumber( e.KeyChar ) )
+            if ( !char.IsNumber( e.KeyChar ) && e.KeyChar != '\b' )
                 e.Handled = true;
         }
 
@@ -151,10 +160,18 @@ namespace Logistic_Transport
             if ( Informations.table_informations.rows < 2 || Informations.table_informations.columns < 2 )
                 content = false;
 
-            for ( Int32 i = 0; i < Informations.table_informations.rows; i++ )
-                for ( Int32 j = 0; j < Informations.table_informations.columns; j++ )
-                    if ( data_table_dgv[ j, i ].Value == "" || data_table_dgv[ j, i ].Value.ToString() == "0" )
-                        content = false;
+            for ( Int32 i = 0; i < Informations.table_informations.rows + 1; i++ )
+                for ( Int32 j = 0; j < Informations.table_informations.columns + 1; j++ )
+                {
+                    if ( data_table_dgv[j, i].Value == null )
+                    {
+                        if ( i != Informations.table_informations.rows && j != Informations.table_informations.columns )
+                            return false;
+                    }
+                    else
+                        if ( data_table_dgv[ j, i ].Value == "" || data_table_dgv[ j, i ].Value.ToString() == "0" )
+                            content = false;
+                }
 
             if ( content == false )
                 return false;
@@ -181,24 +198,28 @@ namespace Logistic_Transport
             return false;
         }
 
-        // Check that the rows and columns totals are correct
-        private void check_sum( Int32 row, Int32 column )
+        private void copy_table()
         {
-            Int32 total = 0;
+            data.Clear();
+            old_informations[0] = Informations.table_informations.rows;
+            old_informations[1] = Informations.table_informations.columns;
 
-            // Change the requests total
-            for ( Int32 i = 0; i < Informations.table_informations.rows; i++ )
-                total += Int32.Parse( data_table_dgv[ column, i ].Value.ToString() );
-            
-            data_table_dgv[ column, Informations.table_informations.rows ].Value = total;
+            for ( int i = 0; i < Informations.table_informations.rows + 1; i++ )
+                for ( int j = 0; j < Informations.table_informations.columns + 1; j++ )
+                    data.Add( Int32.Parse( data_table_dgv[ j, i ].Value.ToString() ) );
+        }
 
-            total = 0;
+        private void reload_table(object sender, EventArgs e)
+        {
+            Informations.table_informations.rows = old_informations[0];
+            Informations.table_informations.columns = old_informations[1];
+            Informations.table_informations.random_fill = false;
 
-            // Change the production total
-            for ( Int32 i = 0; i < Informations.table_informations.columns; i++ )
-                total += Int32.Parse( data_table_dgv[i, row].Value.ToString() );
+            make_new_table();
 
-            data_table_dgv[Informations.table_informations.columns, row].Value = total;
+            for ( int i = 0; i < Informations.table_informations.rows + 1; i++ )
+                for ( int j = 0; j < Informations.table_informations.columns + 1; j++ )
+                    data_table_dgv[ j, i ].Value = data[ i * ( old_informations[1] + 1 ) + j ];
         }
 
         private void run( object sender, EventArgs e )
@@ -210,7 +231,9 @@ namespace Logistic_Transport
             else
             {
                 Output output = new Output( ref data_table_dgv );
+                copy_table();
                 output.ShowDialog();
+                last_table_b.Enabled = true;
             }
         }
     }

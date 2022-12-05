@@ -25,14 +25,12 @@ namespace Logistic_Transport
         {
             output_lv.Clear();
             output_lv.View = View.Details;
-            output_lv.Columns.Add( "Output", 391 );
-            /*output_lv.Columns.Add( "Producer", 100 );
-            output_lv.Columns.Add( "Consumer", 100 );
-            output_lv.Columns.Add( "Total", 191 );*/
+            //output_lv.Columns.Add( "Output", 391 );
+            output_lv.Columns.Add( "Quantity", 100 );
+            output_lv.Columns.Add( "Price per Unit", 100 );
+            output_lv.Columns.Add( "Price", 91 );
+            output_lv.Columns.Add( "Total", 100 );
         }
-
-        private void reload_table()
-        {}
 
         private void disable_changings()
         {
@@ -42,18 +40,11 @@ namespace Logistic_Transport
             step_by_step_cb.Enabled = false;
         }
 
-        private void enable_changings()
-        {
-            // Enable the possibility to make changes
-            run_nord_west_b.Enabled = true;
-            run_minimum_prices_b.Enabled = true;
-            step_by_step_cb.Enabled = true;
-        }
-
         private void run_nord_west( object sender, EventArgs e )
         {
+            disable_changings();
+
             initialize_table();
-            output_lv.Items.Add( new ListViewItem( "Nord - West Method" ) );
 
             // Final cost
             Int32 cost = 0;
@@ -111,6 +102,8 @@ namespace Logistic_Transport
                     Informations.table_informations.rows -= 1;
                 }
 
+                output_lv.Items.Add( new ListViewItem( new[] { cell_cost.ToString(), production.ToString(), ( cell_cost * production ).ToString(), cost.ToString() } ) );
+
                 // Update the cost
                 cost += cell_cost * production;
 
@@ -120,9 +113,7 @@ namespace Logistic_Transport
                     task.Wait();
                 }
             }
-            output_lv.Items.Add( new ListViewItem( cost.ToString() ) );
-
-            reload_table();
+            output_lv.Items.Add( new ListViewItem( "Final Cost: " + cost.ToString() ) );
         }
 
         private void run_minimum_prices( object sender, EventArgs e )
@@ -130,7 +121,6 @@ namespace Logistic_Transport
             disable_changings();
 
             initialize_table();
-            output_lv.Items.Add( new ListViewItem( "Minimum Costs Method" ) );
 
             // Final cost
             Int32 cost = 0;
@@ -192,12 +182,12 @@ namespace Logistic_Transport
                     Informations.table_informations.rows -= 1;
                 }
 
+                output_lv.Items.Add( new ListViewItem( new[] { cell_cost.ToString(), production.ToString(), ( cell_cost * production ).ToString(), cost.ToString() } ) );
+
                 // Update the cost
                 cost += cell_cost * production;
             }
-            output_lv.Items.Add( new ListViewItem( cost.ToString() ) );
-
-            reload_table();
+            output_lv.Items.Add( new ListViewItem( "Final Cost: " + cost.ToString() ) );
         }
 
         private void get_minimum( ref Int32 min_row, ref Int32 min_column )
