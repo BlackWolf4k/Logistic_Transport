@@ -52,7 +52,13 @@ namespace Logistic_Transport
 
             // Set the names of the columns
             for ( Int32 i = 0; i < Informations.table_informations.columns; i++ )
+            {
+                data_table_dgv.Columns[i].SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+                data_table_dgv.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 data_table_dgv.Columns[i].Name = "D" + i.ToString();
+            }
+            data_table_dgv.Columns[ Informations.table_informations.columns ].SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            data_table_dgv.Columns[ Informations.table_informations.columns ].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             data_table_dgv.Columns[ Informations.table_informations.columns ].Name = "Production";
 
             // Make the total readonly
@@ -158,7 +164,7 @@ namespace Logistic_Transport
             bool content = true;
 
             if ( Informations.table_informations.rows < 2 || Informations.table_informations.columns < 2 )
-                content = false;
+                return false;
 
             for ( Int32 i = 0; i < Informations.table_informations.rows + 1; i++ )
                 for ( Int32 j = 0; j < Informations.table_informations.columns + 1; j++ )
@@ -169,8 +175,15 @@ namespace Logistic_Transport
                             return false;
                     }
                     else
+                    {
+                        Int32 result = 0;
+                        if ( !Int32.TryParse( data_table_dgv[ j, i ].Value.ToString(), out result ) )
+                        {
+                            return false;
+                        }
                         if ( data_table_dgv[ j, i ].Value == "" || data_table_dgv[ j, i ].Value.ToString() == "0" )
                             content = false;
+                    }
                 }
 
             if ( content == false )
